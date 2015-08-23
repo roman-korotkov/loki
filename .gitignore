@@ -1,0 +1,10 @@
+# git ignore file
+**/_ReSharper*/
+**/bin
+**/obj
+*.user
+*.suo
+*.log
+*.svclog
+Thumbs.db
+/packages

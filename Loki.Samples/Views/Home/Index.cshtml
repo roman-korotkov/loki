@@ -1,0 +1,29 @@
+﻿@model Loki.Samples.Resources.HomeIndex, dynamic
+
+@{
+    ViewBag.Title = @Resources.Title;
+}
+
+<div class="jumbotron">
+    <h1>@Resources.Caption</h1>
+    <p class="lead">@Resources.IndexMessage</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-large">@Resources.Buttons.MoreAsp &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Resources.GettingStarted</h2>
+        <p>@Resources.GettingStartedText</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">@Resources.Buttons.MoreMvc &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.GetMoreLibraries</h2>
+        <p>@Resources.GetMoreLibrariesText</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">@Resources.Buttons.MoreLibraries &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resources.WebHosting</h2>
+        <p>@Resources.WebHostingText</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">@Resources.Buttons.MoreHosting &raquo;</a></p>
+    </div>
+</div>

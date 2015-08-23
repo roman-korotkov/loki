@@ -1,0 +1,20 @@
+﻿@model Loki.Samples.Resources.Error, HandleErrorInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Resources.Caption</title>
+</head>
+<body>
+    <hgroup>
+        <h1>@Resources.Caption</h1>
+	    <h2>@Resources.Message</h2>
+    </hgroup>
+	<p>@Model.Exception.Message</p>
+</body>
+</html>

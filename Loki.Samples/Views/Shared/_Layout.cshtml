@@ -1,0 +1,65 @@
+﻿@using System.Threading
+@using Loki.Samples.Models
+@model Loki.Samples.Resources.Layout, dynamic
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @Resources.Name</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(@Resources.Name, "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+	        <div class="navbar-collapse collapse">
+		        <ul class="nav navbar-nav">
+			        <li>@Html.ActionLink(@Resources.Menu.Home, "Index", "Home")</li>
+			        <li>@Html.ActionLink(@Resources.Menu.About, "About", "Home")</li>
+			        <li>@Html.ActionLink(@Resources.Menu.Contact, "Contact", "Home")</li>
+			        <li>@Html.ActionLink(@Resources.Menu.Error, "Error", "Home")</li>
+			        <li>@Html.ActionLink(@Resources.Menu.Localization, "Index", "Localization")</li>
+		        </ul>
+		        <ul class="nav navbar-nav navbar-right">
+			        @foreach (var culture in CultureService.Cultures)
+			        {
+				        var style = Equals(Thread.CurrentThread.CurrentUICulture, culture) ? "active" : "";
+
+				        <li class="@style">
+					        @using (Html.BeginForm("SetCulture", "Localization", new { id = culture.LCID, returnToUrl = Request.RawUrl }, FormMethod.Post))
+							{
+								<button class="btn btn-primary">@culture.Name</button>
+							}
+				        </li>
+			        }
+		        </ul>
+	        </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+	        <p>
+		        &copy; @DateTime.Now.Year - @Resources.Name<br/>
+				@Resources.Copyright
+	        </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

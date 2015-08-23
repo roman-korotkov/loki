@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loki", "Loki\Loki.csproj", "{830D596D-14BA-4778-AF0F-01CC506B3BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loki.Samples", "Loki.Samples\Loki.Samples.csproj", "{5DB7D00B-20D8-4C9A-A444-AE868B97D3D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loki.Resources.EF", "Loki.Resources.EF\Loki.Resources.EF.csproj", "{1FF40F6A-B1D0-4B43-88C3-A06C47851200}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{830D596D-14BA-4778-AF0F-01CC506B3BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{830D596D-14BA-4778-AF0F-01CC506B3BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{830D596D-14BA-4778-AF0F-01CC506B3BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{830D596D-14BA-4778-AF0F-01CC506B3BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB7D00B-20D8-4C9A-A444-AE868B97D3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB7D00B-20D8-4C9A-A444-AE868B97D3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB7D00B-20D8-4C9A-A444-AE868B97D3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB7D00B-20D8-4C9A-A444-AE868B97D3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF40F6A-B1D0-4B43-88C3-A06C47851200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF40F6A-B1D0-4B43-88C3-A06C47851200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF40F6A-B1D0-4B43-88C3-A06C47851200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF40F6A-B1D0-4B43-88C3-A06C47851200}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

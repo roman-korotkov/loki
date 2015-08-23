@@ -1,0 +1,37 @@
+﻿@model Loki.Samples.Resources.Localization, IEnumerable<SelectListItem>
+
+@{
+	ViewBag.Title = @Resources.Title;
+}
+
+<h2>@Resources.Title</h2>
+
+<table class="table table-striped">
+	<tr>
+		<th>
+			@Resources.AvailableCultures
+		</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				<a title="@Resources.DownloadPOFile" href="@Url.Action("Download", new { id = item.Value })">
+					@item.Text
+				</a>
+			</td>
+		</tr>
+	}
+	<tr>
+		<td>
+			@using (Html.BeginForm("Upload", "Localization", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+				<label for="file" class="control-label">@Resources.UploadPOFile</label>
+				<div class="input-group">
+					<input id="file" type="file" name="file" class="form-control" />
+					<input type="submit" value="@Resources.Upload" class="btn btn-primary" />
+				</div>
+			}
+		</td>
+	</tr>
+</table>

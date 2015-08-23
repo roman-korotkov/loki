@@ -1,0 +1,19 @@
+﻿@model Loki.Samples.Resources.HomeContact, dynamic
+
+@{
+    ViewBag.Title = Resources.Title;
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>@Resources.Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>@Resources.Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
