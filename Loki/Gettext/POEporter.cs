@@ -58,15 +58,17 @@ namespace Loki.Gettext
 		/// <param name="provider">The provider.</param>
 		/// <param name="objects">The objects.</param>
 		/// <returns>The PO file.</returns>
-		public File Export(ResourceProvider provider, ResourceObjectProvider objects = null)
+		public virtual File Export(ResourceProvider provider, ResourceObjectProviderBase objects = null)
 		{
 			var culture = Culture ?? CultureInfo.InstalledUICulture;
 
-			var originalContext = new LocalizationContext(EmptyResourceProvider.Instance, CultureInfo.InvariantCulture, objects);
+			var originalContext = new LocalizationContext(EmptyResourceProvider.Instance, CultureInfo.InvariantCulture, new ResourceObjectProvider());
 			var translatedContext = new LocalizationContext(new GettextResourceProvider(provider), culture, objects);
 
 			var list = new List<Entry>();
 			var stringType = typeof (string);
+
+			CachedResourceObjectProvider.RemoveAllCachedObjects();
 
 			foreach (var type in _types)
 			{
@@ -88,6 +90,8 @@ namespace Loki.Gettext
 						TranslatedText = (string)property.GetValue(original, null)
 					}));
 			}
+
+			CachedResourceObjectProvider.RemoveAllCachedObjects();
 
 			return new File(Name, culture.Name, list);
 		}

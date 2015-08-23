@@ -98,6 +98,14 @@ namespace Loki.Resources.EF
 			_cache.TryRemove(culture.LCID, out sets);
 		}
 
+		/// <summary>
+		/// Clear all the cached instances.
+		/// </summary>
+		public void Clear()
+		{
+			_cache.Clear();
+		}
+
 		private ConcurrentDictionary<string, ResourceCollection> GetResources(int culture)
 		{
 			using (var storage = new LokiContext())

@@ -20,7 +20,7 @@ namespace Loki.Gettext
 		/// </summary>
 		/// <param name="file">The file.</param>
 		/// <param name="editor">The editor.</param>
-		public void Import(File file, ResourceEditor editor)
+		public virtual void Import(File file, ResourceEditor editor)
 		{
 			var culture = Culture ?? CultureInfo.GetCultureInfo(file.Language);
 
@@ -39,6 +39,8 @@ namespace Loki.Gettext
 					collection.Set(resource.Key, resource.Value);
 				}
 			}
+
+			CachedResourceObjectProvider.RemoveAllCachedObjects();
 		}
 	}
 }

@@ -11,18 +11,6 @@ namespace Loki.Resources
 		internal static event Action ClearCache;
 
 		/// <summary>
-		/// Gets the resouce object of the specified type from the specified resource provider for the specified culture.
-		/// </summary>
-		/// <typeparam name="TResource">The type of the resource.</typeparam>
-		/// <param name="resourceProvider">The resource provider.</param>
-		/// <param name="culture">The culture.</param>
-		/// <returns>The resource object.</returns>
-		public override TResource Get<TResource>(ResourceProvider resourceProvider, CultureInfo culture)
-		{
-			return ResourceObject<TResource>.GetCached(resourceProvider, culture);
-		}
-
-		/// <summary>
 		/// Removes all the cached objects from the cache.
 		/// </summary>
 		public static void RemoveAllCachedObjects()
@@ -32,6 +20,18 @@ namespace Loki.Resources
 			{
 				clearCache();
 			}
+		}
+
+		/// <summary>
+		/// Gets the resouce object of the specified type from the specified resource provider for the specified culture.
+		/// </summary>
+		/// <typeparam name="TResource">The type of the resource.</typeparam>
+		/// <param name="resourceProvider">The resource provider.</param>
+		/// <param name="culture">The culture.</param>
+		/// <returns>The resource object.</returns>
+		public override TResource Get<TResource>(ResourceProvider resourceProvider, CultureInfo culture)
+		{
+			return ResourceObject<TResource>.GetCached(resourceProvider, culture);
 		}
 	}
 }
