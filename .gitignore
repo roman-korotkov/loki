@@ -6,5 +6,6 @@
 *.suo
 *.log
 *.svclog
+*.nupkg
 Thumbs.db
 /packages

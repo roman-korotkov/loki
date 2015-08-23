@@ -83,9 +83,9 @@ namespace Loki.Gettext
 					}));
 				list.AddRange(ResourceObjectProviderBase.EnumerateProperties(type).Where(x => x.PropertyType == stringType).Select(property => new Entry
 					{
-						Context = string.Format("{0}.{1}", set, property.Name), 
-						OriginalText = (string) property.GetValue(original), 
-						TranslatedText = (string) property.GetValue(translated)
+						Context = string.Format("{0}.{1}", set, property.Name),
+						OriginalText = (string)property.GetValue(original, null),
+						TranslatedText = (string)property.GetValue(original, null)
 					}));
 			}
 
