@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<system.web.webPages.razor>
+		<pages pageBaseType="System.Web.Mvc.WebViewPage" xdt:Transform="SetAttributes" xdt:Locator="Condition(@pageBaseType='Loki.Mvc.LocalizableWebViewPage')"/>
+	</system.web.webPages.razor>
+</configuration>

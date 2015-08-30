@@ -33,13 +33,13 @@
 		        </ul>
 		        <ul class="nav navbar-nav navbar-right">
 			        @foreach (var culture in CultureService.Cultures)
-			        {
-				        var style = Equals(Thread.CurrentThread.CurrentUICulture, culture) ? "active" : "";
-
-				        <li class="@style">
+					{
+				        <li>
 					        @using (Html.BeginForm("SetCulture", "Localization", new { id = culture.LCID, returnToUrl = Request.RawUrl }, FormMethod.Post))
 							{
-								<button class="btn btn-primary">@culture.Name</button>
+								var style = Equals(Thread.CurrentThread.CurrentUICulture, culture) ? "btn btn-primary" : "btn";
+
+								<button class="@style">@culture.Name</button>
 							}
 				        </li>
 			        }

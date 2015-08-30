@@ -5,10 +5,10 @@
 	/// </summary>
 	public enum CommentType
 	{
-		Plain,
-		SourceReference,
-		Flag,
+		Translator,
 		Extracted,
+		Reference,
+		Flag,
 		Previous
 	}
 }

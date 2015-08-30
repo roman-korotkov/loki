@@ -151,9 +151,9 @@ namespace Loki.Gettext.PortableObject
 		{
 			switch (commentType)
 			{
-				case CommentType.Plain:
+				case CommentType.Translator:
 					return "";
-				case CommentType.SourceReference:
+				case CommentType.Reference:
 					return ":";
 				case CommentType.Flag:
 					return ",";
@@ -332,7 +332,7 @@ namespace Loki.Gettext.PortableObject
 			switch (token.Type)
 			{
 				case ":":
-					type = CommentType.SourceReference;
+					type = CommentType.Reference;
 					value = token.Content;
 					break;
 				case ".":
@@ -348,7 +348,7 @@ namespace Loki.Gettext.PortableObject
 					value = token.Content;
 					break;
 				default:
-					type = CommentType.Plain;
+					type = CommentType.Translator;
 					value = token.Type + token.Content;
 					break;
 			}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<connectionStrings xdt:Transform="InsertIfMissing">
+	</connectionStrings>
+	<connectionStrings>
+		<add name="LokiContext" connectionString="data source=(LocalDB)\v11.0;attachdbfilename=|DataDirectory|\Loki.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" xdt:Transform="InsertIfMissing"/>
+	</connectionStrings>
+</configuration>

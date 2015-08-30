@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using Loki.Gettext.PortableObject;
 using Loki.Resources;
 
@@ -12,7 +13,14 @@ namespace Loki.Gettext
 	/// </summary>
 	public class POEporter
 	{
+		private static readonly int CommentTypeCount;
+
 		private readonly List<Type> _types;
+
+		static POEporter()
+		{
+			CommentTypeCount = Enum.GetValues(typeof (CommentType)).Length;
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="POEporter"/> class.
@@ -77,23 +85,47 @@ namespace Loki.Gettext
 
 				var set = type.FullName;
 
+				var comments = GetComments(type.GetCustomAttributes<POCommentAttribute>());
+
 				list.AddRange(ResourceObjectProviderBase.EnumerateFields(type).Where(x => x.FieldType == stringType).Select(field => new Entry
 					{
 						Context = string.Format("{0}.{1}", set, field.Name), 
 						OriginalText = (string) field.GetValue(original), 
-						TranslatedText = (string) field.GetValue(translated)
+						TranslatedText = (string) field.GetValue(translated),
+						Comments = GetComments(field.GetCustomAttributes<POCommentAttribute>(), comments)
 					}));
 				list.AddRange(ResourceObjectProviderBase.EnumerateProperties(type).Where(x => x.PropertyType == stringType).Select(property => new Entry
 					{
 						Context = string.Format("{0}.{1}", set, property.Name),
 						OriginalText = (string)property.GetValue(original, null),
-						TranslatedText = (string)property.GetValue(original, null)
+						TranslatedText = (string)property.GetValue(original, null),
+						Comments = GetComments(property.GetCustomAttributes<POCommentAttribute>(), comments)
 					}));
 			}
 
 			CachedResourceObjectProvider.RemoveAllCachedObjects();
 
 			return new File(Name, culture.Name, list);
+		}
+
+		private static Comment[] GetComments(IEnumerable<POCommentAttribute> attributes, Comment[] defaults = null)
+		{
+			var comments = new Comment[CommentTypeCount];
+
+			if (defaults != null)
+			{
+				foreach (var @default in defaults)
+				{
+					comments[(int) @default.Type] = @default;
+				}
+			}
+
+			foreach (var attribute in attributes)
+			{
+				comments[(int) attribute.Type] = new Comment {Type = attribute.Type, Value = attribute.Value};
+			}
+
+			return comments.Where(x => x != null).ToArray();
 		}
 	}
 }

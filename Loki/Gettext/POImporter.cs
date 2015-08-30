@@ -24,12 +24,14 @@ namespace Loki.Gettext
 		{
 			var culture = Culture ?? CultureInfo.GetCultureInfo(file.Language);
 
-			var resourceGroups = file.Entries.Select(x => new
+			var resources = file.Entries.Select(x => new
 			{
 				Set = x.Context.Substring(0, x.Context.LastIndexOf('.')),
 				Key = x.Context.Substring(x.Context.LastIndexOf('.') + 1),
 				Value = x.TranslatedText
-			}).GroupBy(x => x.Set);
+			});
+
+			var resourceGroups = resources.GroupBy(x => x.Set);
 
 			foreach (var group in resourceGroups)
 			{

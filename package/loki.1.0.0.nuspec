@@ -20,10 +20,20 @@
                 <dependency id="Microsoft.AspNet.WebPages" version="3.2.3" />
                 <dependency id="Microsoft.Web.Infrastructure" version="1.0.0" />
                 <dependency id="EntityFramework" version="6.1.3" />
+                <dependency id="WebActivatorEx" version="2.0.6" />
             </group>
         </dependencies>
     </metadata>
     <files>
+        <file src="content\App_Start\LokiConfig.cs.pp" target="content\App_Start\LokiConfig.cs.pp" />
+        <file src="content\Controllers\LokiLocalizationController.cs.pp" target="content\Controllers\LokiLocalizationController.cs.pp" />
+        <file src="content\Models\LokiCultureService.cs.pp" target="content\Models\LokiCultureService.cs.pp" />
+        <file src="content\Resources\LokiLocalization.cs.pp" target="content\Resources\LokiLocalization.cs.pp" />
+        <file src="content\Views\LokiLocalization\Index.cshtml.pp" target="content\Views\LokiLocalization\Index.cshtml.pp" />
+        <file src="content\Views\Web.config.install.xdt" target="content\Views\Web.config.install.xdt" />
+        <file src="content\Views\Web.config.uninstall.xdt" target="content\Views\Web.config.uninstall.xdt" />
+        <file src="content\Web.config.install.xdt" target="content\Web.config.install.xdt" />
+        <file src="content\Web.config.uninstall.xdt" target="content\Web.config.uninstall.xdt" />
         <file src="lib\net45\Loki.dll" target="lib\net45\Loki.dll" />
         <file src="lib\net45\Loki.Resources.EF.dll" target="lib\net45\Loki.Resources.EF.dll" />
     </files>

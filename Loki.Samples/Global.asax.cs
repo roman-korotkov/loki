@@ -12,8 +12,6 @@ namespace Loki.Samples
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-			LokiConfig.SetUp();
 		}
 	}
 }

@@ -6,18 +6,18 @@ using System.Web;
 using System.Web.Mvc;
 using Loki.Gettext;
 using Loki.Resources;
-using Loki.Samples.Models;
+using $rootnamespace$.Models;
 
-namespace Loki.Samples.Controllers
+namespace $rootnamespace$.Controllers
 {
-	public class LocalizationController : Controller
+	public class LokiLocalizationController : Controller
 	{
 		public const string CookieName = "CurrentUICulture";
 
 		[HttpPost]
 		public ActionResult SetCulture(int id, string returnToUrl)
 		{
-			var cultureInfo = CultureService.FindCulture(id);
+			var cultureInfo = LokiCultureService.FindCulture(id);
 
 			HttpContext.Response.Cookies.Set(new HttpCookie(CookieName, cultureInfo.LCID.ToString(CultureInfo.InvariantCulture))
 				{
@@ -29,7 +29,7 @@ namespace Loki.Samples.Controllers
 
 		public ActionResult Index()
 		{
-			var cultures = CultureService.Cultures.
+			var cultures = LokiCultureService.Cultures.
 				Select(x => new SelectListItem
 				{
 					Value = x.LCID.ToString(),
@@ -41,15 +41,15 @@ namespace Loki.Samples.Controllers
 
 		public ActionResult Download(int id)
 		{
-			var culture = CultureService.FindCulture(id);
+			var culture = LokiCultureService.FindCulture(id);
 			
 			var exporter = new POEporter
 				{
-					Name = "loki-samples",
+					Name = "$assemblyname$",
 					Culture = culture
 				};
 
-			exporter.AddNamespace("Loki.Samples.Resources");
+			exporter.AddNamespace("$rootnamespace$.Resources");
 
 			var file = exporter.Export(ResourceProviders.Current);
 
@@ -69,13 +69,13 @@ namespace Loki.Samples.Controllers
 		{
 			using (var reader = new StreamReader(file.InputStream))
 			{
-				var content = Gettext.PortableObject.File.ReadFrom(reader);
+				var content = Loki.Gettext.PortableObject.File.ReadFrom(reader);
 
 				var importer = new POImporter
 					{
-						Culture = CultureService.FindCulture(content.Language)
+						Culture = LokiCultureService.FindCulture(content.Language)
 					};
-
+					
 				content.Entries.RemoveAll(x => string.IsNullOrEmpty(x.TranslatedText));
 
 				importer.Import(content, ResourceProviders.Editor);

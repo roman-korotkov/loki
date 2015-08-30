@@ -1,6 +1,8 @@
 ﻿using Loki.Resources;
 using Loki.Resources.EF;
 
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Loki.Samples.LokiConfig), "SetUp")]
+
 namespace Loki.Samples
 {
 	public class LokiConfig
